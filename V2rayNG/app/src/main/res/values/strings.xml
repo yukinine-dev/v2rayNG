@@ -27,6 +27,17 @@
     <string name="menu_item_save_config">Save config</string>
     <string name="menu_item_edit_config">Edit config</string>
     <string name="menu_item_del_config">Delete config</string>
+    <string name="import_sheet_title">Add server</string>
+    <string name="import_sheet_subtitle">Choose how to add a config</string>
+    <string name="import_sheet_section_manual">Manual entry</string>
+    <string name="import_sheet_qr_title">Scan QR code</string>
+    <string name="import_sheet_qr_subtitle">Use the camera</string>
+    <string name="import_sheet_clipboard_title">Paste from clipboard</string>
+    <string name="import_sheet_clipboard_subtitle">Detects VLESS, VMess, SS, Trojan…</string>
+    <string name="import_sheet_file_title">Open from file</string>
+    <string name="import_sheet_file_subtitle">Pick a .json or text config</string>
+    <string name="import_sheet_subscription_title">Update subscriptions</string>
+    <string name="import_sheet_subscription_subtitle">Refresh all subscription groups</string>
     <string name="menu_item_import_config_qrcode">Import from QRcode</string>
     <string name="menu_item_import_config_clipboard">Import from Clipboard</string>
     <string name="menu_item_import_config_local">Import from locally</string>
