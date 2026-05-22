@@ -1,0 +1,10 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Stylized "Y" mark — same geometry as ic_splash_logo. -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,32 L48,32 L54,50 L60,32 L78,32 L62,66 L62,82 L46,82 L46,66 Z" />
+</vector>
