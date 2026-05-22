@@ -1,57 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPing">#009966</color>
-    <color name="colorPingRed">#FF0099</color>
-    <color name="colorConfigType">#f97910</color>
+    <!-- Legacy semantic colors retained for existing references -->
+    <color name="colorPing">#2E7D32</color>
+    <color name="colorPingRed">#BA1A1A</color>
+    <color name="colorConfigType">#7E5DBD</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="color_fab_active">#f97910</color>
+    <color name="color_fab_active">#4A55A2</color>
     <color name="color_fab_inactive">#9C9C9C</color>
     <color name="divider_color_light">#E0E0E0</color>
     <color name="colorIndicator">@color/md_theme_primary</color>
 
-    <!-- Primary colors - main tone: black -->
-    <color name="md_theme_primary">#000000</color>
+    <!-- Yukinine MD3 palette — light scheme
+         Seed: deep indigo (#4A55A2) with a lavender secondary. -->
+    <color name="md_theme_primary">#4A55A2</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
-    <color name="md_theme_primaryContainer">#E0E0E0</color>
-    <color name="md_theme_onPrimaryContainer">#000000</color>
+    <color name="md_theme_primaryContainer">#DDE0FF</color>
+    <color name="md_theme_onPrimaryContainer">#000F5C</color>
 
-    <!-- Secondary colors - accent color: orange -->
-    <color name="md_theme_secondary">#f97910</color>
+    <color name="md_theme_secondary">#7E5DBD</color>
     <color name="md_theme_onSecondary">#FFFFFF</color>
-    <color name="md_theme_secondaryContainer">#FFE8D6</color>
-    <color name="md_theme_onSecondaryContainer">#2B1700</color>
+    <color name="md_theme_secondaryContainer">#EBDDFF</color>
+    <color name="md_theme_onSecondaryContainer">#290057</color>
 
-    <!-- Tertiary colors - accent color: green -->
-    <color name="md_theme_tertiary">#009966</color>
+    <color name="md_theme_tertiary">#006874</color>
     <color name="md_theme_onTertiary">#FFFFFF</color>
-    <color name="md_theme_tertiaryContainer">#A0F2D0</color>
-    <color name="md_theme_onTertiaryContainer">#00201A</color>
+    <color name="md_theme_tertiaryContainer">#97F0FF</color>
+    <color name="md_theme_onTertiaryContainer">#001F24</color>
 
-    <!-- Error colors -->
     <color name="md_theme_error">#BA1A1A</color>
     <color name="md_theme_errorContainer">#FFDAD6</color>
     <color name="md_theme_onError">#FFFFFF</color>
     <color name="md_theme_onErrorContainer">#410002</color>
 
-    <!-- Background colors -->
-    <color name="md_theme_background">#FFFFFF</color>
-    <color name="md_theme_onBackground">#1C1B1F</color>
+    <color name="md_theme_background">#FEFBFF</color>
+    <color name="md_theme_onBackground">#1B1B1F</color>
 
-    <!-- Surface colors -->
-    <color name="md_theme_surface">#FFFFFF</color>
-    <color name="md_theme_onSurface">#1C1B1F</color>
-    <color name="md_theme_surfaceVariant">#E7E0EC</color>
-    <color name="md_theme_onSurfaceVariant">#49454F</color>
-    <color name="md_theme_inverseSurface">#313033</color>
-    <color name="md_theme_inverseOnSurface">#F4EFF4</color>
+    <color name="md_theme_surface">#FEFBFF</color>
+    <color name="md_theme_onSurface">#1B1B1F</color>
+    <color name="md_theme_surfaceVariant">#E3E1EC</color>
+    <color name="md_theme_onSurfaceVariant">#46464F</color>
+    <color name="md_theme_inverseSurface">#303034</color>
+    <color name="md_theme_inverseOnSurface">#F2EFF7</color>
 
-    <!-- Outline colors -->
-    <color name="md_theme_outline">#79747E</color>
-    <color name="md_theme_outlineVariant">#CAC4D0</color>
+    <color name="md_theme_surfaceContainerLowest">#FFFFFF</color>
+    <color name="md_theme_surfaceContainerLow">#F7F4FC</color>
+    <color name="md_theme_surfaceContainer">#F2EFF7</color>
+    <color name="md_theme_surfaceContainerHigh">#ECE9F2</color>
+    <color name="md_theme_surfaceContainerHighest">#E6E3EC</color>
 
-    <!-- Other colors -->
-    <color name="md_theme_inversePrimary">#C0C0C0</color>
+    <color name="md_theme_outline">#777680</color>
+    <color name="md_theme_outlineVariant">#C7C5D0</color>
+
+    <color name="md_theme_inversePrimary">#BAC3FF</color>
     <color name="md_theme_shadow">#000000</color>
-    <color name="md_theme_surfaceTint">#000000</color>
+    <color name="md_theme_surfaceTint">#4A55A2</color>
     <color name="md_theme_scrim">#000000</color>
+
+    <!-- VPN connection state -->
+    <color name="status_connected">#2E7D32</color>
+    <color name="status_connecting">#ED6C02</color>
+    <color name="status_disconnected">#5F6368</color>
 </resources>
