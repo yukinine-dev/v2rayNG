@@ -9,4 +9,6 @@
     <dimen name="view_height_dp64">64dp</dimen>
     <dimen name="view_height_dp120">120dp</dimen>
     <dimen name="view_height_dp160">160dp</dimen>
+    <dimen name="connection_button_size">160dp</dimen>
+    <dimen name="connection_button_icon">56dp</dimen>
 </resources>

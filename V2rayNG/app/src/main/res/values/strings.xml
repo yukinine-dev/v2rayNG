@@ -356,6 +356,12 @@
     <string name="routing_settings_outbound_tag_hint" translatable="false">proxy / direct / block / &lt;remarks&gt;</string>
     <string name="routing_settings_outbound_tag">outboundTag</string>
 
+    <string name="connection_status_disconnected">Disconnected</string>
+    <string name="connection_status_connecting">Connecting…</string>
+    <string name="connection_status_connected">Connected</string>
+    <string name="connection_tap_to_connect">Tap to connect</string>
+    <string name="connection_tap_to_disconnect">Tap to disconnect</string>
+    <string name="connection_no_server_selected">No server selected</string>
     <string name="connection_test_pending">Check Connectivity</string>
     <string name="connection_test_testing">Testing…</string>
     <string name="connection_test_testing_count">Testing %d configs…</string>

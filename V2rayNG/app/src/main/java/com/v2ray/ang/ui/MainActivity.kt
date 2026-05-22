@@ -96,7 +96,8 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
             }
         })
 
-        binding.fab.setOnClickListener { handleFabAction() }
+        binding.btnConnect.setOnClickListener { handleFabAction() }
+        binding.connectionCard.setOnClickListener { handleFabAction() }
         binding.layoutTest.setOnClickListener { handleLayoutTestClick() }
 
         setupGroupTab()
@@ -185,27 +186,47 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
 
     private fun applyRunningState(isLoading: Boolean, isRunning: Boolean) {
         if (isLoading) {
-            binding.fab.setImageResource(R.drawable.ic_fab_check)
+            binding.btnConnect.setIconResource(R.drawable.ic_fab_check)
+            binding.tvConnectionStatus.setText(R.string.connection_status_connecting)
+            binding.tvConnectionSubtitle.text = currentServerLabel()
             return
         }
 
         if (isRunning) {
-            binding.fab.setImageResource(R.drawable.ic_stop_24dp)
-            binding.fab.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_fab_active))
-            binding.fab.contentDescription = getString(R.string.action_stop_service)
+            binding.btnConnect.setIconResource(R.drawable.ic_stop_24dp)
+            binding.btnConnect.backgroundTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.md_theme_tertiaryContainer))
+            binding.btnConnect.iconTint =
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.md_theme_onTertiaryContainer))
+            binding.btnConnect.contentDescription = getString(R.string.connection_tap_to_disconnect)
+            binding.tvConnectionStatus.setText(R.string.connection_status_connected)
+            binding.tvConnectionSubtitle.text = currentServerLabel()
             setTestState(getString(R.string.connection_connected))
             binding.layoutTest.isFocusable = true
         } else {
-            binding.fab.setImageResource(R.drawable.ic_play_24dp)
-            binding.fab.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_fab_inactive))
-            binding.fab.contentDescription = getString(R.string.tasker_start_service)
+            binding.btnConnect.setIconResource(R.drawable.ic_play_24dp)
+            binding.btnConnect.backgroundTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.md_theme_primaryContainer))
+            binding.btnConnect.iconTint =
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.md_theme_onPrimaryContainer))
+            binding.btnConnect.contentDescription = getString(R.string.connection_tap_to_connect)
+            binding.tvConnectionStatus.setText(R.string.connection_status_disconnected)
+            binding.tvConnectionSubtitle.text = currentServerLabel()
             setTestState(getString(R.string.connection_not_connected))
             binding.layoutTest.isFocusable = false
         }
     }
 
+    private fun currentServerLabel(): String {
+        val guid = MmkvManager.getSelectServer().orEmpty()
+        if (guid.isEmpty()) return getString(R.string.connection_no_server_selected)
+        return MmkvManager.decodeServerConfig(guid)?.remarks
+            ?: getString(R.string.connection_no_server_selected)
+    }
+
     override fun onResume() {
         super.onResume()
+        binding.tvConnectionSubtitle.text = currentServerLabel()
     }
 
     override fun onPause() {
