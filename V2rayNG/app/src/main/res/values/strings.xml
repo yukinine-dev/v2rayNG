@@ -458,6 +458,9 @@
         <item>Dark</item>
     </string-array>
 
+    <string name="routing_settings_preset_title">Quick preset</string>
+    <string name="routing_settings_preset_subtitle">Tap a preset to replace your routing rules</string>
+
     <string-array name="preset_rulesets">
         <item>China Whitelist</item>
         <item>China Blacklist</item>

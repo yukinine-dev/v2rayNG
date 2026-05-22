@@ -5,11 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.button.MaterialButton
 import com.v2ray.ang.AppConfig
 import com.v2ray.ang.R
 import com.v2ray.ang.contracts.BaseAdapterListener
@@ -60,6 +62,53 @@ class RoutingSettingActivity : HelperBaseActivity() {
         binding.layoutDomainStrategy.setOnClickListener {
             setDomainStrategy()
         }
+
+        setupPresetToggleGroup()
+    }
+
+    private fun setupPresetToggleGroup() {
+        val group = binding.toggleGroupPreset
+        group.removeAllViews()
+        preset_rulesets.forEachIndexed { index, label ->
+            val button = MaterialButton(
+                this,
+                null,
+                com.google.android.material.R.attr.materialButtonOutlinedStyle,
+            ).apply {
+                text = label
+                isCheckable = true
+                id = ViewGroup.generateViewId()
+            }
+            group.addView(button)
+            button.setOnClickListener {
+                confirmAndApplyPreset(index, label)
+            }
+        }
+    }
+
+    private fun confirmAndApplyPreset(index: Int, label: String) {
+        AlertDialog.Builder(this)
+            .setTitle(label)
+            .setMessage(R.string.routing_settings_import_rulesets_tip)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                lifecycleScope.launch(Dispatchers.IO) {
+                    try {
+                        SettingsManager.resetRoutingRulesetsFromPresets(this@RoutingSettingActivity, index)
+                        withContext(Dispatchers.Main) {
+                            refreshData()
+                            toastSuccess(R.string.toast_success)
+                        }
+                    } catch (e: Exception) {
+                        LogUtil.e(AppConfig.TAG, "Failed to apply preset", e)
+                        withContext(Dispatchers.Main) { toastError(R.string.toast_failure) }
+                    }
+                }
+            }
+            .setNegativeButton(android.R.string.cancel) { _, _ ->
+                binding.toggleGroupPreset.clearChecked()
+            }
+            .setOnCancelListener { binding.toggleGroupPreset.clearChecked() }
+            .show()
     }
 
     override fun onResume() {
