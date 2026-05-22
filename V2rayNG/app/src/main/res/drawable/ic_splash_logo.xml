@@ -1,0 +1,10 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Stylized "Y" mark on a transparent canvas; tint comes from the splash theme. -->
+    <path
+        android:fillColor="?attr/colorOnPrimaryContainer"
+        android:pathData="M30,28 L48,28 L54,46 L60,28 L78,28 L62,62 L62,82 L46,82 L46,62 Z" />
+</vector>

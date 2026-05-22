@@ -11,6 +11,7 @@ import android.view.MenuItem
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
@@ -66,6 +67,7 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupToolbar(binding.toolbar, false, getString(R.string.title_server))
@@ -94,7 +96,8 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
             }
         })
 
-        binding.fab.setOnClickListener { handleFabAction() }
+        binding.btnConnect.setOnClickListener { handleFabAction() }
+        binding.connectionCard.setOnClickListener { handleFabAction() }
         binding.layoutTest.setOnClickListener { handleLayoutTestClick() }
 
         setupGroupTab()
@@ -183,27 +186,47 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
 
     private fun applyRunningState(isLoading: Boolean, isRunning: Boolean) {
         if (isLoading) {
-            binding.fab.setImageResource(R.drawable.ic_fab_check)
+            binding.btnConnect.setIconResource(R.drawable.ic_fab_check)
+            binding.tvConnectionStatus.setText(R.string.connection_status_connecting)
+            binding.tvConnectionSubtitle.text = currentServerLabel()
             return
         }
 
         if (isRunning) {
-            binding.fab.setImageResource(R.drawable.ic_stop_24dp)
-            binding.fab.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_fab_active))
-            binding.fab.contentDescription = getString(R.string.action_stop_service)
+            binding.btnConnect.setIconResource(R.drawable.ic_stop_24dp)
+            binding.btnConnect.backgroundTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.md_theme_tertiaryContainer))
+            binding.btnConnect.iconTint =
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.md_theme_onTertiaryContainer))
+            binding.btnConnect.contentDescription = getString(R.string.connection_tap_to_disconnect)
+            binding.tvConnectionStatus.setText(R.string.connection_status_connected)
+            binding.tvConnectionSubtitle.text = currentServerLabel()
             setTestState(getString(R.string.connection_connected))
             binding.layoutTest.isFocusable = true
         } else {
-            binding.fab.setImageResource(R.drawable.ic_play_24dp)
-            binding.fab.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_fab_inactive))
-            binding.fab.contentDescription = getString(R.string.tasker_start_service)
+            binding.btnConnect.setIconResource(R.drawable.ic_play_24dp)
+            binding.btnConnect.backgroundTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.md_theme_primaryContainer))
+            binding.btnConnect.iconTint =
+                ColorStateList.valueOf(ContextCompat.getColor(this, R.color.md_theme_onPrimaryContainer))
+            binding.btnConnect.contentDescription = getString(R.string.connection_tap_to_connect)
+            binding.tvConnectionStatus.setText(R.string.connection_status_disconnected)
+            binding.tvConnectionSubtitle.text = currentServerLabel()
             setTestState(getString(R.string.connection_not_connected))
             binding.layoutTest.isFocusable = false
         }
     }
 
+    private fun currentServerLabel(): String {
+        val guid = MmkvManager.getSelectServer().orEmpty()
+        if (guid.isEmpty()) return getString(R.string.connection_no_server_selected)
+        return MmkvManager.decodeServerConfig(guid)?.remarks
+            ?: getString(R.string.connection_no_server_selected)
+    }
+
     override fun onResume() {
         super.onResume()
+        binding.tvConnectionSubtitle.text = currentServerLabel()
     }
 
     override fun onPause() {
@@ -234,68 +257,8 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.import_qrcode -> {
-            importQRcode()
-            true
-        }
-
-        R.id.import_clipboard -> {
-            importClipboard()
-            true
-        }
-
-        R.id.import_local -> {
-            importConfigLocal()
-            true
-        }
-
-        R.id.import_manually_policy_group -> {
-            importManually(EConfigType.POLICYGROUP.value)
-            true
-        }
-
-        R.id.import_manually_proxy_chain -> {
-            importManually(EConfigType.PROXYCHAIN.value)
-            true
-        }
-
-        R.id.import_manually_vmess -> {
-            importManually(EConfigType.VMESS.value)
-            true
-        }
-
-        R.id.import_manually_vless -> {
-            importManually(EConfigType.VLESS.value)
-            true
-        }
-
-        R.id.import_manually_ss -> {
-            importManually(EConfigType.SHADOWSOCKS.value)
-            true
-        }
-
-        R.id.import_manually_socks -> {
-            importManually(EConfigType.SOCKS.value)
-            true
-        }
-
-        R.id.import_manually_http -> {
-            importManually(EConfigType.HTTP.value)
-            true
-        }
-
-        R.id.import_manually_trojan -> {
-            importManually(EConfigType.TROJAN.value)
-            true
-        }
-
-        R.id.import_manually_wireguard -> {
-            importManually(EConfigType.WIREGUARD.value)
-            true
-        }
-
-        R.id.import_manually_hysteria2 -> {
-            importManually(EConfigType.HYSTERIA2.value)
+        R.id.menu_add_server -> {
+            ImportBottomSheet().show(supportFragmentManager, ImportBottomSheet.TAG)
             true
         }
 
@@ -352,6 +315,22 @@ class MainActivity : HelperBaseActivity(), NavigationView.OnNavigationItemSelect
         }
 
         else -> super.onOptionsItemSelected(item)
+    }
+
+    internal fun openImportQrCode() {
+        importQRcode()
+    }
+
+    internal fun openImportClipboard() {
+        importClipboard()
+    }
+
+    internal fun openImportLocal() {
+        importConfigLocal()
+    }
+
+    internal fun openImportManually(createConfigType: Int) {
+        importManually(createConfigType)
     }
 
     private fun importManually(createConfigType: Int) {

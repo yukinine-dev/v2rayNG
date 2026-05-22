@@ -1,52 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_fab_active">#f97910</color>
+    <color name="color_fab_active">#BAC3FF</color>
     <color name="color_fab_inactive">#646464</color>
     <color name="divider_color_light">#424242</color>
 
-    <!-- Primary colors - main tone: gray -->
-    <color name="md_theme_primary">#C0C0C0</color>
-    <color name="md_theme_onPrimary">#303030</color>
-    <color name="md_theme_primaryContainer">#474747</color>
-    <color name="md_theme_onPrimaryContainer">#E0E0E0</color>
+    <!-- Yukinine MD3 palette — dark scheme -->
+    <color name="md_theme_primary">#BAC3FF</color>
+    <color name="md_theme_onPrimary">#1A2678</color>
+    <color name="md_theme_primaryContainer">#323E8A</color>
+    <color name="md_theme_onPrimaryContainer">#DDE0FF</color>
 
-    <!-- Secondary colors - accent color: orange -->
-    <color name="md_theme_secondary">#FFB687</color>
-    <color name="md_theme_onSecondary">#4E2600</color>
-    <color name="md_theme_secondaryContainer">#6F3800</color>
-    <color name="md_theme_onSecondaryContainer">#FFE8D6</color>
+    <color name="md_theme_secondary">#D0BCFF</color>
+    <color name="md_theme_onSecondary">#3F2D7E</color>
+    <color name="md_theme_secondaryContainer">#574494</color>
+    <color name="md_theme_onSecondaryContainer">#EBDDFF</color>
 
-    <!-- Tertiary colors - tertiary color: green -->
-    <color name="md_theme_tertiary">#83D6B5</color>
-    <color name="md_theme_onTertiary">#00382E</color>
-    <color name="md_theme_tertiaryContainer">#005143</color>
-    <color name="md_theme_onTertiaryContainer">#A0F2D0</color>
+    <color name="md_theme_tertiary">#4FD8EB</color>
+    <color name="md_theme_onTertiary">#00363D</color>
+    <color name="md_theme_tertiaryContainer">#004F58</color>
+    <color name="md_theme_onTertiaryContainer">#97F0FF</color>
 
-    <!-- Error colors -->
     <color name="md_theme_error">#FFB4AB</color>
     <color name="md_theme_errorContainer">#93000A</color>
     <color name="md_theme_onError">#690005</color>
     <color name="md_theme_onErrorContainer">#FFDAD6</color>
 
-    <!-- Background colors -->
-    <color name="md_theme_background">#1C1B1F</color>
-    <color name="md_theme_onBackground">#E6E1E5</color>
+    <color name="md_theme_background">#131316</color>
+    <color name="md_theme_onBackground">#E4E1E6</color>
 
-    <!-- Surface colors -->
-    <color name="md_theme_surface">#1C1B1F</color>
-    <color name="md_theme_onSurface">#E6E1E5</color>
-    <color name="md_theme_surfaceVariant">#49454F</color>
-    <color name="md_theme_onSurfaceVariant">#CAC4D0</color>
-    <color name="md_theme_inverseSurface">#E6E1E5</color>
-    <color name="md_theme_inverseOnSurface">#1C1B1F</color>
+    <color name="md_theme_surface">#131316</color>
+    <color name="md_theme_onSurface">#E4E1E6</color>
+    <color name="md_theme_surfaceVariant">#46464F</color>
+    <color name="md_theme_onSurfaceVariant">#C7C5D0</color>
+    <color name="md_theme_inverseSurface">#E4E1E6</color>
+    <color name="md_theme_inverseOnSurface">#303034</color>
 
-    <!-- Outline colors -->
-    <color name="md_theme_outline">#938F99</color>
-    <color name="md_theme_outlineVariant">#49454F</color>
+    <color name="md_theme_surfaceContainerLowest">#0E0E11</color>
+    <color name="md_theme_surfaceContainerLow">#1B1B1F</color>
+    <color name="md_theme_surfaceContainer">#1F1F23</color>
+    <color name="md_theme_surfaceContainerHigh">#2A2A2E</color>
+    <color name="md_theme_surfaceContainerHighest">#353539</color>
 
-    <!-- Other colors -->
-    <color name="md_theme_inversePrimary">#000000</color>
+    <color name="md_theme_outline">#91909A</color>
+    <color name="md_theme_outlineVariant">#46464F</color>
+
+    <color name="md_theme_inversePrimary">#4A55A2</color>
     <color name="md_theme_shadow">#000000</color>
-    <color name="md_theme_surfaceTint">#C0C0C0</color>
+    <color name="md_theme_surfaceTint">#BAC3FF</color>
     <color name="md_theme_scrim">#000000</color>
+
+    <!-- VPN connection state -->
+    <color name="status_connected">#7BC67E</color>
+    <color name="status_connecting">#FFB74D</color>
+    <color name="status_disconnected">#9AA0A6</color>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">v2rayNG</string>
+    <string name="app_name" translatable="false">Yukinine VPN</string>
     <string name="app_widget_name">Switch</string>
     <string name="app_tile_name">Switch</string>
     <string name="app_tile_first_use">First use of this feature, please use the app to add server</string>
@@ -27,6 +27,17 @@
     <string name="menu_item_save_config">Save config</string>
     <string name="menu_item_edit_config">Edit config</string>
     <string name="menu_item_del_config">Delete config</string>
+    <string name="import_sheet_title">Add server</string>
+    <string name="import_sheet_subtitle">Choose how to add a config</string>
+    <string name="import_sheet_section_manual">Manual entry</string>
+    <string name="import_sheet_qr_title">Scan QR code</string>
+    <string name="import_sheet_qr_subtitle">Use the camera</string>
+    <string name="import_sheet_clipboard_title">Paste from clipboard</string>
+    <string name="import_sheet_clipboard_subtitle">Detects VLESS, VMess, SS, Trojan…</string>
+    <string name="import_sheet_file_title">Open from file</string>
+    <string name="import_sheet_file_subtitle">Pick a .json or text config</string>
+    <string name="import_sheet_subscription_title">Update subscriptions</string>
+    <string name="import_sheet_subscription_subtitle">Refresh all subscription groups</string>
     <string name="menu_item_import_config_qrcode">Import from QRcode</string>
     <string name="menu_item_import_config_clipboard">Import from Clipboard</string>
     <string name="menu_item_import_config_local">Import from locally</string>
@@ -356,6 +367,12 @@
     <string name="routing_settings_outbound_tag_hint" translatable="false">proxy / direct / block / &lt;remarks&gt;</string>
     <string name="routing_settings_outbound_tag">outboundTag</string>
 
+    <string name="connection_status_disconnected">Disconnected</string>
+    <string name="connection_status_connecting">Connecting…</string>
+    <string name="connection_status_connected">Connected</string>
+    <string name="connection_tap_to_connect">Tap to connect</string>
+    <string name="connection_tap_to_disconnect">Tap to disconnect</string>
+    <string name="connection_no_server_selected">No server selected</string>
     <string name="connection_test_pending">Check Connectivity</string>
     <string name="connection_test_testing">Testing…</string>
     <string name="connection_test_testing_count">Testing %d configs…</string>
@@ -440,6 +457,9 @@
         <item>Light</item>
         <item>Dark</item>
     </string-array>
+
+    <string name="routing_settings_preset_title">Quick preset</string>
+    <string name="routing_settings_preset_subtitle">Tap a preset to replace your routing rules</string>
 
     <string-array name="preset_rulesets">
         <item>China Whitelist</item>
