@@ -50,9 +50,11 @@
         <!-- Other colors -->
         <item name="colorPrimaryInverse">@color/md_theme_inversePrimary</item>
 
-        <!-- Status bar and navigation bar - system bars -->
-        <item name="android:statusBarColor">@color/md_theme_surface</item>
-        <item name="android:navigationBarColor">@color/md_theme_surface</item>
+        <!-- Status bar and navigation bar - system bars (transparent for edge-to-edge;
+             contrast scrims are managed by enableEdgeToEdge() in BaseActivity). -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
     </style>
 
     <!-- Day/Night theme: inherit common values and set light-mode-specific items -->
